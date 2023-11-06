@@ -128,7 +128,7 @@ class ModelParamStoreSchema:
     def save_scripts(self, filenames: List[Union[Path, str]]):
         filenames = list(set(filenames))
         for filename in filenames:
-            with open(str(filename), "r") as source, open(str(self.path.scripts_path(Path(filename).name).resolve()), "w") as target:
+            with open(str(filename), "r",encoding='gb18030',errors = 'ignore') as source, open(str(self.path.scripts_path(Path(filename).name).resolve()), "w",encoding='gb18030',errors = 'ignore') as target:
                 print("save", str(filename), "to", str(self.path.scripts_path(Path(filename).name).resolve()))
                 target.writelines(source.readlines())
 
